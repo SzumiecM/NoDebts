@@ -35,6 +35,6 @@ function list_debtors() {
 }
 
 function clear_depts() {
-    alert('dupa')
     localStorage.clear()
+    location.reload()
 }
