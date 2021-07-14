@@ -38,15 +38,24 @@ function list_debtors() {
 
         debtor.append(create_column(name))
         debtor.append(create_column(amount))
-        debtor.append(create_column(dept.toFixed(2)))
+        debtor.append(create_column(dept.toFixed(2), 1))
 
         document.querySelector('#debtors').append(debtor)
     }
 }
 
-function create_column(element) {
+function create_column(element, value=null) {
     column = document.createElement('td')
     column.innerHTML = element
+
+    if (value) {
+        if (element > 0) {
+            column.setAttribute("class", "positive")
+        } else if (element < 0) {
+            column.setAttribute("class", "negative")
+        }
+    }
+
     return column
 }
 

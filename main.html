@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>No Depts</title>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
@@ -12,16 +13,16 @@
 <form id="add_debtor">
     <input id="debtor_name" placeholder="Name" required>
     <input id="dept_amount" placeholder="Amount" type="number" required>
-    <input type="submit">
-</form>
+    <input type="submit" value="Add">
 
-<button id="clear_depts">Clear all depts</button>
+    <button id="clear_depts">Clear all depts</button>
+</form>
 
 <table id="debtors">
     <tr>
         <th>Name</th>
         <th>Payed</th>
-        <th>Owes</th>
+        <th>Dept</th>
     </tr>
 </table>
 

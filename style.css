@@ -1,0 +1,56 @@
+body {
+    background-color: black;
+    text-align: center;
+}
+
+th, td, h1, h2 {
+    color: antiquewhite;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+form{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.positive {
+    color: greenyellow;
+}
+
+.negative {
+    color: red;
+}
+
+input[type=text] {
+    border: 2px solid red;
+    border-radius: 4px;
+    /*border: 3px solid antiquewhite;*/
+    /*background-color: black;*/
+    /*color: antiquewhite;*/
+}
+
+input[type=text]:focus {
+    border: 3px solid red;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid antiquewhite;
+}
+
+th {
+    font-size: 40px;
+}
+
+
