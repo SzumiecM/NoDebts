@@ -36,20 +36,18 @@ function list_debtors() {
 
         debtor = document.createElement('tr')
 
-        name_element = document.createElement('td')
-        name_element.innerHTML = name
-        debtor.append(name_element)
-
-        amount_element = document.createElement('td')
-        amount_element.innerHTML = amount
-        debtor.append(amount_element)
-
-        dept_element = document.createElement('td')
-        dept_element.innerHTML = dept.toFixed(2)
-        debtor.append(dept_element)
+        debtor.append(create_column(name))
+        debtor.append(create_column(amount))
+        debtor.append(create_column(dept.toFixed(2)))
 
         document.querySelector('#debtors').append(debtor)
     }
+}
+
+function create_column(element) {
+    column = document.createElement('td')
+    column.innerHTML = element
+    return column
 }
 
 function clear_depts() {
