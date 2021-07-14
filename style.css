@@ -73,6 +73,7 @@ th, td, .material-icons {
 
 .material-icons {
     width: 100%;
+    margin-left: 0;
 }
 
 th {
