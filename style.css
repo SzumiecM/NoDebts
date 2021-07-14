@@ -23,11 +23,11 @@ h2 {
 }
 
 .positive {
-    color: greenyellow;
+    color: red;
 }
 
 .negative {
-    color: red;
+    color: greenyellow;
 }
 
 input, button {
