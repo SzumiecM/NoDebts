@@ -9,7 +9,6 @@
 <h1>No Depts</h1>
 <h2 id="total_spent">Total spent: 0</h2>
 
-<ol id="debtors"></ol>
 <form id="add_debtor">
     <input id="debtor_name" placeholder="Name" required>
     <input id="dept_amount" placeholder="Amount" type="number" required>
@@ -17,6 +16,14 @@
 </form>
 
 <button id="clear_depts">Clear all depts</button>
+
+<table id="debtors">
+    <tr>
+        <th>Name</th>
+        <th>Payed</th>
+        <th>Owes</th>
+    </tr>
+</table>
 
 <script src="main.js"></script>
 </body>

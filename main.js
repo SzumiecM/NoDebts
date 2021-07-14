@@ -34,8 +34,19 @@ function list_debtors() {
 
         let dept = total_spent/number_of_deptors - amount
 
-        debtor = document.createElement('li')
-        debtor.innerHTML = `${name} payed ${amount} | owes ${dept.toFixed(2)}`
+        debtor = document.createElement('tr')
+
+        name_element = document.createElement('td')
+        name_element.innerHTML = name
+        debtor.append(name_element)
+
+        amount_element = document.createElement('td')
+        amount_element.innerHTML = amount
+        debtor.append(amount_element)
+
+        dept_element = document.createElement('td')
+        dept_element.innerHTML = dept.toFixed(2)
+        debtor.append(dept_element)
 
         document.querySelector('#debtors').append(debtor)
     }
