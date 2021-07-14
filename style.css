@@ -16,7 +16,7 @@ h2 {
     font-size: 40px;
 }
 
-.form{
+#form{
     display: inline-block;
     width: 100%;
     margin-bottom: 40px;
@@ -33,7 +33,8 @@ h2 {
 input, button {
     width: 22%;
     height: 40px;
-
+    float: left;
+    margin-left: 2.3%;
 
     font-family: "Lucida Console", serif;
     font-size: 30px;
