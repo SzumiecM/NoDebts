@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     list_debtors()
-    sort_debtors_alphabeticaly()
 
     document.querySelector('#add_debtor').onsubmit = () => {
         name = document.querySelector('#debtor_name').value
@@ -83,10 +82,6 @@ function delete_deptor(e) {
     console.log(e.target.id)
     localStorage.removeItem(e.target.id)
     location.reload()
-}
-
-function sort_debtors_alphabeticaly() {
-
 }
 
 const sum_values = obj => Object.values(obj).reduce((a, b) => +a + +b, 0);
