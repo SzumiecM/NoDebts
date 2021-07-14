@@ -10,8 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
         add_to_local_storage(name, amount)
     }
 
-    document.querySelector('#clear_depts').addEventListener("click", clear_depts)
+    delete_deptor_buttons = document.querySelectorAll('.material-icons')
 
+    for (let i = 0; i< delete_deptor_buttons.length; i++){
+        delete_deptor_buttons[i].addEventListener('click', delete_deptor)
+    }
+
+    document.querySelector('#clear_depts').addEventListener('click', clear_depts)
 })
 
 function add_to_local_storage(name, amount) {
@@ -28,11 +33,15 @@ function list_debtors() {
     number_of_deptors = localStorage.length
     document.querySelector('#total_spent').innerHTML = `Total spent: ${total_spent}`
 
-    for (let i=0; i < number_of_deptors; i++){
+    if (number_of_deptors) {
+        document.querySelector('#titles').append(document.createElement('th'))
+    }
+
+    for (let i = 0; i < number_of_deptors; i++) {
         let name = localStorage.key(i)
         let amount = localStorage.getItem(name)
 
-        let dept = total_spent/number_of_deptors - amount
+        let dept = total_spent / number_of_deptors - amount
 
         debtor = document.createElement('tr')
 
@@ -40,19 +49,25 @@ function list_debtors() {
         debtor.append(create_column(amount))
         debtor.append(create_column(dept.toFixed(2), 1))
 
+        delete_button = document.createElement('button')
+        delete_button.setAttribute('class', 'material-icons')
+        delete_button.setAttribute('id', name)
+        delete_button.innerHTML = 'delete'
+        debtor.append(delete_button)
+
         document.querySelector('#debtors').append(debtor)
     }
 }
 
-function create_column(element, value=null) {
+function create_column(element, value = null) {
     column = document.createElement('td')
     column.innerHTML = element
 
     if (value) {
         if (element > 0) {
-            column.setAttribute("class", "positive")
+            column.setAttribute('class', 'positive')
         } else if (element < 0) {
-            column.setAttribute("class", "negative")
+            column.setAttribute('class', 'negative')
         }
     }
 
@@ -61,6 +76,12 @@ function create_column(element, value=null) {
 
 function clear_depts() {
     localStorage.clear()
+    location.reload()
+}
+
+function delete_deptor(e) {
+    console.log(e.target.id)
+    localStorage.removeItem(e.target.id)
     location.reload()
 }
 
