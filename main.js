@@ -88,10 +88,6 @@ function list_transfers(deptors) {
 
         deptors.sort((a, b) => (a[1] > b[1] ? -1 : 1))
 
-        for (let i = 0; i < deptors.length; i++) {
-            console.log(`${deptors[i][0]} | ${deptors[i][1]}`)
-        }
-
         if (deptors[0][1] <= Math.abs(deptors[deptors.length - 1][1])) {
             if (deptors[0][1] === 0) {
                 break
@@ -104,7 +100,6 @@ function list_transfers(deptors) {
             deptors[deptors.length - 1][1] += deptors[0][1]
             deptors.shift()
         } else {
-            console.log('else')
             a = document.createElement('li')
             a.innerHTML = `${deptors[0][0]} -- ${Math.abs(deptors[deptors.length - 1][1]).toFixed(2)} --> ${deptors[deptors.length - 1][0]}`
             document.querySelector('#transfers').append(a)
@@ -112,9 +107,7 @@ function list_transfers(deptors) {
             deptors[0][1] += deptors[deptors.length - 1][1]
             deptors.pop()
         }
-        console.log('PASSED')
     }
-    console.log('finished')
 }
 
 function create_column(element, value = null) {
