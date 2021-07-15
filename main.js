@@ -93,6 +93,10 @@ function list_transfers(deptors) {
         }
 
         if (deptors[0][1] <= Math.abs(deptors[deptors.length - 1][1])) {
+            if (deptors[0][1] === 0) {
+                break
+            }
+
             a = document.createElement('li')
             a.innerHTML = `${deptors[0][0]} -- ${deptors[0][1].toFixed(2)} --> ${deptors[deptors.length - 1][0]}`
             document.querySelector('#transfers').append(a)
