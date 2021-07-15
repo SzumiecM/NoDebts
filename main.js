@@ -30,7 +30,14 @@ function add_to_local_storage(name, amount) {
 function list_debtors() {
     total_spent = sum_values(localStorage)
     number_of_deptors = localStorage.length
-    document.querySelector('#total_spent').innerHTML = `Total spent: ${total_spent} | ${total_spent / number_of_deptors} each`
+
+    if (number_of_deptors) {
+        dept_per_person = total_spent / number_of_deptors
+    } else {
+        dept_per_person = 0
+    }
+
+    document.querySelector('#total_spent').innerHTML = `Total spent: ${total_spent} | ${dept_per_person} each`
 
     if (number_of_deptors) {
         document.querySelector('#titles').append(document.createElement('th'))
@@ -68,8 +75,9 @@ function list_debtors() {
 
         document.querySelector('#debtors').append(debtor)
     }
-
-    list_transfers(deptors)
+    if (localStorage.length) {
+        list_transfers(deptors)
+    }
 }
 
 function list_transfers(deptors) {
@@ -84,7 +92,7 @@ function list_transfers(deptors) {
             console.log(`${deptors[i][0]} | ${deptors[i][1]}`)
         }
 
-        if (deptors[0][1] <= Math.abs(deptors[deptors.length - 1][1])){
+        if (deptors[0][1] <= Math.abs(deptors[deptors.length - 1][1])) {
             a = document.createElement('li')
             a.innerHTML = `${deptors[0][0]} -> ${deptors[deptors.length - 1][0]} (${deptors[0][1].toFixed(2)})`
             document.querySelector('#transfers').append(a)
