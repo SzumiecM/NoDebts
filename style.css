@@ -87,9 +87,10 @@ td {
 li {
     color: antiquewhite;
     font-size: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 ul {
+    margin-top: 50px;
     list-style-type: none;
 }
