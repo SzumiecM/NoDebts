@@ -94,7 +94,7 @@ function list_transfers(deptors) {
 
         if (deptors[0][1] <= Math.abs(deptors[deptors.length - 1][1])) {
             a = document.createElement('li')
-            a.innerHTML = `${deptors[0][0]} -> ${deptors[deptors.length - 1][0]} (${deptors[0][1].toFixed(2)})`
+            a.innerHTML = `${deptors[0][0]} -- ${deptors[0][1].toFixed(2)} --> ${deptors[deptors.length - 1][0]}`
             document.querySelector('#transfers').append(a)
 
             deptors[deptors.length - 1][1] += deptors[0][1]
@@ -102,7 +102,7 @@ function list_transfers(deptors) {
         } else {
             console.log('else')
             a = document.createElement('li')
-            a.innerHTML = `${deptors[0][0]} -> ${deptors[deptors.length - 1][0]} (${Math.abs(deptors[deptors.length - 1][1]).toFixed(2)})`
+            a.innerHTML = `${deptors[0][0]} -- ${Math.abs(deptors[deptors.length - 1][1]).toFixed(2)} --> ${deptors[deptors.length - 1][0]}`
             document.querySelector('#transfers').append(a)
 
             deptors[0][1] += deptors[deptors.length - 1][1]
