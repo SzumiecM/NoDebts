@@ -84,4 +84,12 @@ td {
     font-size: 20px;
 }
 
+li {
+    color: antiquewhite;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
 
+ul {
+    list-style-type: none;
+}

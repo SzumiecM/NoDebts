@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     delete_deptor_buttons = document.querySelectorAll('.material-icons')
 
-    for (let i = 0; i< delete_deptor_buttons.length; i++){
+    for (let i = 0; i < delete_deptor_buttons.length; i++) {
         delete_deptor_buttons[i].addEventListener('click', delete_deptor)
     }
 
@@ -30,17 +30,29 @@ function add_to_local_storage(name, amount) {
 function list_debtors() {
     total_spent = sum_values(localStorage)
     number_of_deptors = localStorage.length
-    document.querySelector('#total_spent').innerHTML = `Total spent: ${total_spent}`
+    document.querySelector('#total_spent').innerHTML = `Total spent: ${total_spent} | ${total_spent / number_of_deptors} each`
 
     if (number_of_deptors) {
         document.querySelector('#titles').append(document.createElement('th'))
     }
 
+    let deptors = []
+
     for (let i = 0; i < number_of_deptors; i++) {
-        let name = localStorage.key(i)
+        deptors.push(localStorage.key(i))
+    }
+
+    deptors.sort(function (a, b) {
+        return a.toLowerCase().localeCompare(b.toLowerCase());
+    })
+
+    for (let i = 0; i < number_of_deptors; i++) {
+        let name = deptors[i]
         let amount = localStorage.getItem(name)
 
         let dept = total_spent / number_of_deptors - amount
+
+        deptors[i] = [name, dept]
 
         debtor = document.createElement('tr')
 
@@ -56,6 +68,41 @@ function list_debtors() {
 
         document.querySelector('#debtors').append(debtor)
     }
+
+    list_transfers(deptors)
+}
+
+function list_transfers(deptors) {
+    while (true) {
+        if (deptors.length === 1) {
+            break
+        }
+
+        deptors.sort((a, b) => (a[1] > b[1] ? -1 : 1))
+
+        for (let i = 0; i < deptors.length; i++) {
+            console.log(`${deptors[i][0]} | ${deptors[i][1]}`)
+        }
+
+        if (deptors[0][1] <= Math.abs(deptors[deptors.length - 1][1])){
+            a = document.createElement('li')
+            a.innerHTML = `${deptors[0][0]} -> ${deptors[deptors.length - 1][0]} (${deptors[0][1].toFixed(2)})`
+            document.querySelector('#transfers').append(a)
+
+            deptors[deptors.length - 1][1] += deptors[0][1]
+            deptors.shift()
+        } else {
+            console.log('else')
+            a = document.createElement('li')
+            a.innerHTML = `${deptors[0][0]} -> ${deptors[deptors.length - 1][0]} (${Math.abs(deptors[deptors.length - 1][1]).toFixed(2)})`
+            document.querySelector('#transfers').append(a)
+
+            deptors[0][1] += deptors[deptors.length - 1][1]
+            deptors.pop()
+        }
+        console.log('PASSED')
+    }
+    console.log('finished')
 }
 
 function create_column(element, value = null) {
