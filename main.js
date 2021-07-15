@@ -37,7 +37,7 @@ function list_debtors() {
         dept_per_person = 0
     }
 
-    document.querySelector('#total_spent').innerHTML = `Total spent: ${total_spent} | ${dept_per_person} each`
+    document.querySelector('#total_spent').innerHTML = `Total spent: ${total_spent} | ${dept_per_person.toFixed(2)} each`
 
     if (number_of_deptors) {
         document.querySelector('#titles').append(document.createElement('th'))
