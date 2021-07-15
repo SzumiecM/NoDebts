@@ -37,7 +37,7 @@ function list_debtors() {
         dept_per_person = 0
     }
 
-    document.querySelector('#total_spent').innerHTML = `Total spent: ${total_spent} | ${dept_per_person.toFixed(2)} each`
+    document.querySelector('#total_spent').innerHTML = `Total spent: ${total_spent.toFixed(2)} | ${dept_per_person.toFixed(2)} each`
 
     if (number_of_deptors) {
         document.querySelector('#titles').append(document.createElement('th'))
@@ -55,7 +55,7 @@ function list_debtors() {
 
     for (let i = 0; i < number_of_deptors; i++) {
         let name = deptors[i]
-        let amount = localStorage.getItem(name)
+        let amount = +localStorage.getItem(name)
 
         let dept = total_spent / number_of_deptors - amount
 
@@ -64,7 +64,7 @@ function list_debtors() {
         debtor = document.createElement('tr')
 
         debtor.append(create_column(name))
-        debtor.append(create_column(amount))
+        debtor.append(create_column(amount.toFixed(2)))
         debtor.append(create_column(dept.toFixed(2), 1))
 
         delete_button = document.createElement('button')
